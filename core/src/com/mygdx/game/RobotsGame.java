@@ -94,11 +94,13 @@ public class RobotsGame extends ApplicationAdapter {
 	}
 
 	public void kill(RobotsEntity entity, boolean remove) {
-		if(remove && !entitiesToRemove.contains(entity, true)) {
+		if(remove && !entitiesToRemove.contains(entity, true))
 			entitiesToRemove.add(entity);
-		}
 
-		numRobotsAlive--;
+		if(!entity.dead) {
+			entity.dead = true;
+			numRobotsAlive--;
+		}
 	}
 
 	public int indexFromCoords(Vector2 coords) {

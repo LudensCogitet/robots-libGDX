@@ -22,7 +22,7 @@ public abstract class RobotsEntity {
 
     protected final RobotsGame game;
     public EntityType type;
-
+    public boolean dead = false;
     public Vector2 pos;
     public Vector2 lastPos;
 
