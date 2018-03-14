@@ -6,7 +6,7 @@ package com.mygdx.game;
 
 public class Player extends RobotsEntity {
 
-    Player(RobotsGame gameReference, int posX, int posY) {
+    Player(RobotsMainScreen gameReference, int posX, int posY) {
         super(gameReference, EntityType.Player, posX, posY);
     }
 

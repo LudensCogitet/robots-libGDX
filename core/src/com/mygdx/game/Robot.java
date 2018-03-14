@@ -1,6 +1,5 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -8,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
  */
 
 public class Robot extends RobotsEntity {
-    Robot(RobotsGame gameReference, int posX, int posY) {
+    Robot(RobotsMainScreen gameReference, int posX, int posY) {
         super(gameReference, EntityType.Robot, posX, posY);
     }
 
@@ -19,18 +18,18 @@ public class Robot extends RobotsEntity {
         int x = (int) pos.x;
         int y = (int) pos.y;
 
-        if(game.player.pos.x < x) x--;
-        if(game.player.pos.x > x) x++;
-        if(game.player.pos.y < y) y--;
-        if(game.player.pos.y > y) y++;
+        if(gameMain.player.pos.x < x) x--;
+        if(gameMain.player.pos.x > x) x++;
+        if(gameMain.player.pos.y < y) y--;
+        if(gameMain.player.pos.y > y) y++;
 
         move(new Vector2(x, y));
     }
 
     @Override
     public void resolve(RobotsEntity other) {
-        if(game.player.pos.equals(pos)) {
-            game.restart();
+        if(gameMain.player.pos.equals(pos)) {
+            gameMain.restart();
             return;
         }
 
@@ -40,11 +39,11 @@ public class Robot extends RobotsEntity {
 
         if(other.type == EntityType.Robot) {
             type = EntityType.Scrap;
-            game.kill(this, false);
+            gameMain.kill(this, false);
         }
 
         if(other.type == EntityType.Scrap) {
-            game.kill(this, true);
+            gameMain.kill(this, true);
         }
     }
 }

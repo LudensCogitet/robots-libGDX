@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
  */
 
 class RobotsTouchListener extends InputAdapter {
-    private RobotsGame game;
+    private RobotsMainScreen game;
 
     private long        lastTouchTime = 0;
 
@@ -22,7 +22,7 @@ class RobotsTouchListener extends InputAdapter {
 
     private boolean dragged = false;
 
-    RobotsTouchListener(RobotsGame gameReference) {
+    RobotsTouchListener(RobotsMainScreen gameReference) {
         game = gameReference;
 
         touchPoint = new Vector2();
@@ -35,7 +35,7 @@ class RobotsTouchListener extends InputAdapter {
         if(pointer > 1 || TimeUtils.timeSinceMillis(lastTouchTime) <= bufferTime) return false;
 
         if(TimeUtils.timeSinceMillis(lastTouchTime) <= TapDelay) {
-            game.input(RobotsGame.InputTypes.Teleport);
+            game.input(RobotsMainScreen.InputTypes.Teleport);
         }
 
         lastTouchTime = TimeUtils.millis();
@@ -57,23 +57,23 @@ class RobotsTouchListener extends InputAdapter {
             float angle = diff.angle();
 
             if(angle > 337.5f || angle < 22.5f)
-                game.wouldInput(RobotsGame.InputTypes.Right);
+                game.wouldInput(RobotsMainScreen.InputTypes.Right);
             else if(angle > 22.5f && angle < 67.5f)
-                    game.wouldInput((RobotsGame.InputTypes.DownRight));
+                    game.wouldInput((RobotsMainScreen.InputTypes.DownRight));
             else if(angle > 67.5f && angle < 112.5f)
-                game.wouldInput((RobotsGame.InputTypes.Down));
+                game.wouldInput((RobotsMainScreen.InputTypes.Down));
             else if(angle > 112.5f && angle < 157.5)
-                game.wouldInput((RobotsGame.InputTypes.DownLeft));
+                game.wouldInput((RobotsMainScreen.InputTypes.DownLeft));
             else if(angle > 157.5f && angle < 202.5)
-                game.wouldInput((RobotsGame.InputTypes.Left));
+                game.wouldInput((RobotsMainScreen.InputTypes.Left));
             else if(angle > 202.5f && angle < 247.5)
-                game.wouldInput((RobotsGame.InputTypes.UpLeft));
+                game.wouldInput((RobotsMainScreen.InputTypes.UpLeft));
             else if(angle > 247.5f && angle < 292.5)
-                game.wouldInput((RobotsGame.InputTypes.Up));
+                game.wouldInput((RobotsMainScreen.InputTypes.Up));
             else if(angle > 292.5f && angle < 337.5)
-                game.wouldInput((RobotsGame.InputTypes.UpRight));
+                game.wouldInput((RobotsMainScreen.InputTypes.UpRight));
         } else {
-            game.wouldInput(RobotsGame.InputTypes.None);
+            game.wouldInput(RobotsMainScreen.InputTypes.None);
         }
 
         return false;
@@ -84,10 +84,10 @@ class RobotsTouchListener extends InputAdapter {
         if(pointer > 1 || TimeUtils.timeSinceMillis(lastTouchTime) <= bufferTime) return false;
 
         if(dragged && touchPoint.dst(dragPoint) > DeadZone) {
-            game.input(RobotsGame.InputTypes.Move);
+            game.input(RobotsMainScreen.InputTypes.Move);
         }
 
-        game.wouldInput(RobotsGame.InputTypes.None);
+        game.wouldInput(RobotsMainScreen.InputTypes.None);
 
         dragged = false;
         return false;

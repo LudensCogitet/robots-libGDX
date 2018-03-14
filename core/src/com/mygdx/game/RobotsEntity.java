@@ -20,14 +20,14 @@ public abstract class RobotsEntity {
         }
     }
 
-    protected final RobotsGame game;
+    protected final RobotsMainScreen gameMain;
     public EntityType type;
     public boolean dead = false;
     public Vector2 pos;
     public Vector2 lastPos;
 
-    RobotsEntity(RobotsGame gameReference, EntityType entityType, int posX, int posY) {
-        game = gameReference;
+    RobotsEntity(RobotsMainScreen gameReference, EntityType entityType, int posX, int posY) {
+        gameMain = gameReference;
         type = entityType;
         pos = new Vector2(posX, posY);
         lastPos = new Vector2();
