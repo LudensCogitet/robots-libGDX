@@ -245,6 +245,7 @@ public class RobotsMainScreen implements Screen {
 	public void render (float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		viewport.getCamera().update();
 		game.batch.setProjectionMatrix(viewport.getCamera().combined);
 		game.batch.begin();
 		game.batch.draw(sprites[player.type.sprite],

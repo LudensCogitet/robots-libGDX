@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -16,7 +17,7 @@ public class RobotsGame extends Game {
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
-        this.setScreen(new RobotsMainScreen(this));
+        this.setScreen(new RobotsStartScreen(this, RobotsStartScreen.STATE.START));
     }
 
     @Override
